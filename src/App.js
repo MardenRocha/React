@@ -9,9 +9,9 @@ import FormProduct from './components/FormProduct';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(){
 
-    super(props);
+    super();
     this.state={list:[],product:''};
     this.count = 0;
 
