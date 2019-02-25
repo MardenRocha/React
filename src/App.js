@@ -20,7 +20,7 @@ class App extends Component {
           <NavBar/>
         <div className = 'container'>
           <div className='border rounded col-lg-5 mt-4 mx-auto'> 
-              <Products list={this.state.list} product={this.state.product} count={this.state.count}/>
+              <Products list={this.state.list} product={this.state.product}/>
           </div>
         </div>
         </div>

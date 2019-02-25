@@ -4,8 +4,6 @@ import FormProduct from './FormProduct';
 import ProductsPanel from './ProductsPanel';
 
 class Products extends Component{
-
-
     constructor(props){
         super(props);
         
@@ -28,6 +26,7 @@ class Products extends Component{
     
       handleDelete = (id) => {   
      
+        console.log(this.state.list);
         const updateList = this.state.list.filter(item=>item.id!==id);
         this.setState({list:updateList});
     
@@ -51,9 +50,10 @@ class Products extends Component{
     
         if(this.state.product!==''){
       
-          let countUp = this.state.count;
+          let countUp = this.state.count+1;
+          console.log(countUp);
           const newProduct = {
-            id:countUp++,
+            id:countUp,
             description:this.state.product,
             count:0
           };
@@ -71,7 +71,7 @@ class Products extends Component{
           
           }
     
-          this.setState({list:updateList,product:''});
+          this.setState({list:updateList,product:'',count:countUp});
         }
     
     
