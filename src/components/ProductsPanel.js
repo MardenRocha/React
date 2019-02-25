@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Button from './Button';
-import Product from './Product';
 import 'bootstrap/dist/css/bootstrap.css'
 
 
@@ -16,29 +14,29 @@ class ProductsPanel extends Component {
                             {item.count}
                         </div>
                         <div className='col-md-1 p-auto'>
-                            <Button 
+                            <button 
                                 className='btn btn-dark font-weight-bold' 
                                 onClick={()=>addItem(index)}>
                                 +
-                            </Button>
+                            </button>
                         </div>
                         <div className='col-md-1 p-auto'>
-                            <Button 
+                            <button 
                                 className='btn btn-dark'
                                 onClick={()=>remItem(index)}>
                                 -
-                            </Button>
+                            </button>
                         </div>
-                        <Product 
+                        <div 
                             className='col-md-5 font-weight-bold'>
                             {item.description}
-                        </Product>
+                        </div>
                         <div className='col-md-2'>
-                        <Button 
+                        <button 
                             className='btn btn-danger rounded-circle font-weight-bold' 
                             onClick={()=>delItem(item.id)}>
                             X
-                        </Button>
+                        </button>
                         </div>
                     </div>
                 </div>

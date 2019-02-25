@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
-import Form from 'react-bootstrap';
-import Button from './Button';
 
 class FormProduct extends Component {
     render() { 
