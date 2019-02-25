@@ -5,6 +5,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import Products from './components/Products';
 import NavBar from './components/NavBar';
+import Clients from './components/Clients';
 
 
 class App extends Component {
@@ -20,8 +21,11 @@ class App extends Component {
           <NavBar/>
         <div className = 'container'>
           <div className='border rounded col-lg-5 mt-4 mx-auto'> 
-              <Products list={this.state.list} product={this.state.product}/>
+              <Products list={this.state.list} product={this.state.product}/> 
           </div>
+          {
+            //<Clients /> Testing the component created.
+          }
         </div>
         </div>
     );

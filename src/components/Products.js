@@ -51,7 +51,6 @@ class Products extends Component{
         if(this.state.product!==''){
       
           let countUp = this.state.count+1;
-          console.log(countUp);
           const newProduct = {
             id:countUp,
             description:this.state.product,
