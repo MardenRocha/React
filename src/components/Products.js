@@ -51,8 +51,9 @@ class Products extends Component{
     
         if(this.state.product!==''){
       
+          let countUp = this.state.count;
           const newProduct = {
-            id:this.state.count++,
+            id:countUp++,
             description:this.state.product,
             count:0
           };
@@ -94,7 +95,7 @@ class Products extends Component{
             </div>
             <div className='row mt-3 mb-3'>
                 <div className='col-md-6 font-weight-bold'>
-                Cart Total{' '}
+                    Stored items{' '}
                 <span className='font-weight-bold badge badge-dark'>
                     {this.state.list.length}
                 </span> 

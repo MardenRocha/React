@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import Products from './components/Products';
+import NavBar from './components/NavBar';
 
 
 class App extends Component {
@@ -14,11 +15,15 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className='container border rounded col-lg-5 mt-4'> 
-          <Products list={this.state.list} product={this.state.product} count={this.state.count}/>
-      </div>
-
+    return (    
+        <div>
+          <NavBar/>
+        <div className = 'container'>
+          <div className='border rounded col-lg-5 mt-4 mx-auto'> 
+              <Products list={this.state.list} product={this.state.product} count={this.state.count}/>
+          </div>
+        </div>
+        </div>
     );
   }
 }
