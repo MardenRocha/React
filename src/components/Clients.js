@@ -18,7 +18,7 @@ class Clients extends Component {
 
         const{users} = this.state;
         return ( 
-            <div>
+            <div className='container border rounded mt-5'>
                 {users?//case 'user!=null'
                 <table className="table table-hover">
                     <thead>

@@ -6,7 +6,7 @@ class FormProduct extends Component {
         const{onSubmit,value,onChange} = this.props;
         
         return ( 
-
+        <div className = 'container mt-2 mx-auto'>
             <form onSubmit={onSubmit} className='col'>
                 <div className="form-group">
                     <label className="font-weight-bold">Product</label>
@@ -26,6 +26,7 @@ class FormProduct extends Component {
                 </div>
 
             </form>   
+        </div>
          );
     }
 }
