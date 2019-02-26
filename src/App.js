@@ -13,10 +13,10 @@ class App extends Component {
 
   constructor(){
     super();
-    this.state={list:[],product:'',count:0};
+    this.state={list:[],product:'',count:0,users:[]};
   }
 
-  handleAdd = (id) =>{
+  handleAddList = (id) =>{
         
     const updateList = this.state.list;
     updateList[id].count++; 
@@ -24,15 +24,21 @@ class App extends Component {
 
   }
 
-  handleDelete = (id) => {   
+  handleDeleteList = (id) => {   
  
-    console.log(this.state.list);
     const updateList = this.state.list.filter(item=>item.id!==id);
     this.setState({list:updateList});
 
   }
 
-  handleRemove = (id) => {
+  handleDeleteUsers = (id) => {
+
+    const updateUsers = this.state.users.filter(item=>item.id!==id);
+    this.setState({users:updateUsers});
+
+  }
+
+  handleRemoveList = (id) => {
 
      if(this.state.list[id].count>0){
       
@@ -44,7 +50,7 @@ class App extends Component {
 
   }
 
-  handleSubmit = (event) => {
+  handleSubmitList = (event) => {
 
     event.preventDefault();
 
@@ -82,6 +88,12 @@ class App extends Component {
 
   }
 
+  setUsers=(users)=>{
+
+    this.setState({users});
+    
+  }
+
   render() {
     return (
       
@@ -90,16 +102,17 @@ class App extends Component {
           <NavBar/>
                 <Route 
                   exact path='/' 
-                  render={(props)=><Products add={this.handleAdd} rem={this.handleRemove} del={this.handleDelete} subm = {this.handleSubmit} change = {this.onChangeProduct}
+                  render={(props)=><Products add={this.handleAddList} rem={this.handleRemoveList} del={this.handleDeleteList} subm = {this.handleSubmitList} change = {this.onChangeProduct}
                   list={this.state.list} product={this.state.product} count={this.state.count}/>}
                 />
                 <Route 
                   path='/products' 
-                  render={(props)=><Products add={this.handleAdd} rem={this.handleRemove} del={this.handleDelete} subm = {this.handleSubmit} change = {this.onChangeProduct}
+                  render={(props)=><Products add={this.handleAddList} rem={this.handleRemoveList} del={this.handleDeleteList} subm = {this.handleSubmitList} change = {this.onChangeProduct}
                   list={this.state.list} product={this.state.product} count={this.state.count}/>}
                 />
                 <Route
-                  path='/clients' component={Clients}
+                  path='/clients' 
+                  render={(props)=><Clients users={this.state.users} setUsers={this.setUsers} del={this.handleDeleteUsers}/>}
                 />
             </div>
       </BrowserRouter>
