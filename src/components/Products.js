@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import FormProduct from './FormProduct';
 import ProductsPanel from './ProductsPanel';
 

@@ -13,7 +13,7 @@ class App extends Component {
 
   constructor(){
     super();
-    this.state={list:[],product:'',count:0,users:[]};
+    this.state={list:[],product:'',count:0,users:[],isLoading:true};
   }
 
   handleAddList = (id) =>{
@@ -88,9 +88,9 @@ class App extends Component {
 
   }
 
-  setUsers=(users)=>{
+  setUsers=(props)=>{
 
-    this.setState({users});
+    this.setState({users:props.users,isLoading:props.isLoading});
     
   }
 
@@ -112,7 +112,7 @@ class App extends Component {
                 />
                 <Route
                   path='/clients' 
-                  render={(props)=><Clients users={this.state.users} setUsers={this.setUsers} del={this.handleDeleteUsers}/>}
+                  render={(props)=><Clients users={this.state.users} isLoading = {this.state.isLoading}setUsers={this.setUsers} del={this.handleDeleteUsers}/>}
                 />
             </div>
       </BrowserRouter>

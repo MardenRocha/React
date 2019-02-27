@@ -4,20 +4,22 @@ class Clients extends Component {
 
     constructor(props){
         super(props)
-        this.state = {users:this.props.users};
+        this.state = {users:this.props.users,isLoading:this.props.isLoading};
     }
 
     componentDidMount(){
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(res=>res.json())
             .then(users=>{
-                if(this.state.users.length===0)this.props.setUsers(users)
+                if(this.state.users.length===0&&this.state.isLoading){
+                    this.props.setUsers({users,isLoading:false});
+                }
             })//this.setState({users})
             .catch(e=>console.log(e));
     }
 
     usersView(){
-        const {users}=this.props;
+        const {users,isLoading}=this.props;
         if (users.length>0){//case 'user!=null'
             return(
                 <div className='container border rounded mt-5'>
@@ -56,7 +58,7 @@ class Clients extends Component {
                     </table>
                 </div>
             );
-        }else{    
+        }else if(isLoading){    
                 return(      
                     <div className="d-flex justify-content-center">
                         <div className="spinner-border" role="status">
@@ -64,6 +66,18 @@ class Clients extends Component {
                         </div>
                     </div>
                 );
+            }else{
+
+                return(
+
+                    <div className= 'container mt-5'>
+                        <div class="alert alert-danger font-weight-bold" role="alert">
+                            No records found! :(
+                        </div>
+                  </div>
+
+                );
+
             }
         }
     
