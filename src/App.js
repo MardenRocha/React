@@ -24,17 +24,21 @@ class App extends Component {
 
   }
 
-  handleDeleteList = (id) => {   
- 
-    const updateList = this.state.list.filter(item=>item.id!==id);
-    this.setState({list:updateList});
+  handleDeleteList = (id) => {
+    
+      const updateList = this.state.list.filter(item=>item.id!==id);
+      this.setState({list:updateList});
 
   }
 
   handleDeleteUsers = (id) => {
 
-    const updateUsers = this.state.users.filter(item=>item.id!==id);
-    this.setState({users:updateUsers});
+    if(window.confirm('Are you sure?')){
+
+      const updateUsers = this.state.users.filter(item=>item.id!==id);
+      this.setState({users:updateUsers});
+
+    }
 
   }
 

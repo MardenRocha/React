@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import ModalNewClient from './ModalNewClient';
 
 class Clients extends Component {
 
     constructor(props){
         super(props)
-        this.state = {users:this.props.users,isLoading:this.props.isLoading};
+        this.state = {users:this.props.users,isLoading:this.props.isLoading,modalShow:false};
     }
 
     componentDidMount(){
@@ -18,11 +19,21 @@ class Clients extends Component {
             .catch(e=>console.log(e));
     }
 
+    modalClose = () =>{this.setState({modalShow:false})}
+
     usersView(){
         const {users,isLoading}=this.props;
         if (users.length>0){//case 'user!=null'
             return(
-                <div className='container border rounded mt-5'>
+                <div className='container border rounded my-4'>
+                    <div >
+                        <button type="button" className="btn btn-success font-weight-bold my-2">
+                            Add Client <span className="badge badge-light font-weight-bold">+</span>
+                            <span className="sr-only font-weight-bold">Add Client</span>
+                        </button>
+
+                        <ModalNewClient show = {this.state.modalShow} onHide={this.modalClose}/>
+                    </div>                  
                     <table className="table table-hover">
                         <thead>
                             <tr>
@@ -71,6 +82,10 @@ class Clients extends Component {
                 return(
 
                     <div className= 'container mt-5'>
+                        <button type="button" onClick={this.openModal} className="btn btn-success font-weight-bold">
+                            Add Client <span className="badge badge-light font-weight-bold">+</span>
+                            <span className="sr-only font-weight-bold">Add Client</span>
+                        </button>                                     
                         <div class="alert alert-danger font-weight-bold" role="alert">
                             No records found! :(
                         </div>
