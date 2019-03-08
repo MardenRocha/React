@@ -13,7 +13,7 @@ class App extends Component {
 
   constructor(){
     super();
-    this.state={list:[],product:'',count:0,users:[],isLoading:true,modalShow:false};
+    this.state={list:[],product:'',count:0,users:[],isLoading:true,modalShow:false,newUser:{}};
   }
 
   handleAddList = (id) =>{
@@ -21,6 +21,32 @@ class App extends Component {
     const updateList = this.state.list;
     updateList[id].count++; 
     this.setState({list:updateList});  
+
+  }
+
+  handleSubmitClient = (event) =>{
+
+    event.preventDefault();
+
+    let user = this.state.newUser;
+    user.id = this.state.users.length+1;
+
+    this.setState({users:this.state.users.push(user)});
+
+
+  }
+
+  onChangeFields = (event) => {
+
+    event.preventDefault();
+
+    const field = event.target.name;
+
+    let user = this.state.newUser;
+
+    user[field] = event.target.value;
+
+    this.setState({newUser:user});
 
   }
 

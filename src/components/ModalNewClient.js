@@ -23,30 +23,30 @@ class ModalNewClient extends Component {
           <div className="form-row">
             <div className="form-group col-md-6">
               <label for="inputName">Name</label>
-              <input type="text" className="form-control" id="inputName" placeholder="Name"/>
+              <input name = "name" type="text" className="form-control" id="inputName" placeholder="Name"/>
             </div>
             <div className="form-group col-md-6">
               <label for="inputUsername">Username</label>
-              <input type="text" className="form-control" id="inputPassword4" placeholder="Username"/>
+              <input name="username" type="text" className="form-control" id="inputPassword4" placeholder="Username"/>
             </div>
           </div>
           <div className="form-group">
             <label for="Email">Email</label>
-            <input type="email" className="form-control" id="inputEmail" placeholder="myemail@mail.com"/>
+            <input name="email" type="email" className="form-control" id="inputEmail" placeholder="myemail@mail.com"/>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
               <label for="inputCompany">Company</label>
-              <input type="text" className="form-control" id="inputCompany" placeholder="My Company name"/>
+              <input name="company" type="text" className="form-control" id="inputCompany" placeholder="My Company name"/>
             </div>
             <div className="form-group col-md-6">
               <label for="inputSite">Website</label>
-              <input type="text" className="form-control" id="inputSite" placeholder="www.mycompany.com"/>
+              <input name="site" type="text" className="form-control" id="inputSite" placeholder="www.mycompany.com"/>
             </div>
           </div>
           <div className="form-group">
             <label for="inputPhone">Phone</label>
-            <input type="text" className="form-control" id="inputPhone" placeholder="+55 09 1234-5678"/>
+            <input name="phone" type="text" className="form-control" id="inputPhone" placeholder="+55 09 1234-5678"/>
           </div>
         </form>
 
