@@ -13,7 +13,7 @@ class App extends Component {
 
   constructor(){
     super();
-    this.state={list:[],product:'',count:0,users:[],isLoading:true};
+    this.state={list:[],product:'',count:0,users:[],isLoading:true,modalShow:false};
   }
 
   handleAddList = (id) =>{
@@ -98,6 +98,12 @@ class App extends Component {
     
   }
 
+  toggleModal = () => {
+
+      this.setState({modalShow:!this.state.modalShow});
+
+  }
+
   render() {
     return (
       
@@ -116,7 +122,7 @@ class App extends Component {
                 />
                 <Route
                   path='/clients' 
-                  render={(props)=><Clients users={this.state.users} isLoading = {this.state.isLoading}setUsers={this.setUsers} del={this.handleDeleteUsers}/>}
+                  render={(props)=><Clients users={this.state.users} isLoading = {this.state.isLoading}setUsers={this.setUsers} del={this.handleDeleteUsers} setModal = {this.toggleModal} modalShow = {this.state.modalShow}/>}
                 />
             </div>
       </BrowserRouter>
