@@ -22,39 +22,31 @@ class ModalNewClient extends Component {
         <form id='form-new-client'>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input type="email" className="form-control" id="inputEmail4" placeholder="Email"/>
+              <label for="inputName">Name</label>
+              <input type="text" className="form-control" id="inputName" placeholder="Name"/>
             </div>
             <div className="form-group col-md-6">
-              <label for="inputPassword4">Password</label>
-              <input type="password" className="form-control" id="inputPassword4" placeholder="Password"/>
+              <label for="inputUsername">Username</label>
+              <input type="text" className="form-control" id="inputPassword4" placeholder="Username"/>
             </div>
           </div>
           <div className="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"/>
-          </div>
-          <div className="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
+            <label for="Email">Email</label>
+            <input type="email" className="form-control" id="inputEmail" placeholder="myemail@mail.com"/>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" className="form-control" id="inputCity"/>
+              <label for="inputCompany">Company</label>
+              <input type="text" className="form-control" id="inputCompany" placeholder="My Company name"/>
             </div>
-            <div className="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" className="form-control" id="inputZip"/>
+            <div className="form-group col-md-6">
+              <label for="inputSite">Website</label>
+              <input type="text" className="form-control" id="inputSite" placeholder="www.mycompany.com"/>
             </div>
           </div>
           <div className="form-group">
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" id="gridCheck"/>
-              <label className="form-check-label" for="gridCheck">
-                Check me out
-              </label>
-            </div>
+            <label for="inputPhone">Phone</label>
+            <input type="text" className="form-control" id="inputPhone" placeholder="+55 09 1234-5678"/>
           </div>
         </form>
 
