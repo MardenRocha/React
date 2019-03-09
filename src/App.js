@@ -29,22 +29,26 @@ class App extends Component {
     event.preventDefault();
 
     let user = this.state.newUser;
-    user.id = this.state.users.length+1;
-
-    this.setState({users:this.state.users.push(user)});
+    user['id'] = this.state.users.length+1;
+    let updateUsers = this.state.users;
+    updateUsers.push(user);
+    this.setState({users:updateUsers,modalShow:false,newUser:{}});
 
 
   }
 
-  onChangeFields = (event) => {
+  onBlurField = (event) => {
 
-    event.preventDefault();
+    //event.preventDefault();
 
     const field = event.target.name;
-
+    
     let user = this.state.newUser;
 
-    user[field] = event.target.value;
+    if(field==='company')
+        user[field]={name:event.target.value};
+    else 
+        user[field] = event.target.value;
 
     this.setState({newUser:user});
 
@@ -148,7 +152,8 @@ class App extends Component {
                 />
                 <Route
                   path='/clients' 
-                  render={(props)=><Clients users={this.state.users} isLoading = {this.state.isLoading}setUsers={this.setUsers} del={this.handleDeleteUsers} setModal = {this.toggleModal} modalShow = {this.state.modalShow}/>}
+                  render={(props)=><Clients users={this.state.users} isLoading = {this.state.isLoading}setUsers={this.setUsers} del={this.handleDeleteUsers} setModal = {this.toggleModal} modalShow = {this.state.modalShow} handleSubmitClient = {this.handleSubmitClient}
+                  onBlurField = {this.onBlurField}/>}
                 />
             </div>
       </BrowserRouter>

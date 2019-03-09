@@ -30,7 +30,8 @@ class Clients extends Component {
                             <span className="sr-only font-weight-bold">Add Client</span>
                         </button>
 
-                        <ModalNewClient show = {this.props.modalShow} onHide={()=>this.props.setModal()}/>
+                        <ModalNewClient show = {this.props.modalShow} onHide={()=>this.props.setModal()}
+                        handleSubmitClient = {this.props.handleSubmitClient} onBlurField = {this.props.onBlurField}/>
                     </div>                  
                     <table className="table table-hover">
                         <thead>

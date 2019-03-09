@@ -3,10 +3,13 @@ import {Modal} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class ModalNewClient extends Component {
+  
+  
   render(){
+    const {show,onHide} = this.props;
       return (
         <Modal
-        {...this.props}
+        {...{show,onHide}}
         size="lg"
         animation={false}
         aria-labelledby="contained-modal-title-vcenter"
@@ -22,38 +25,38 @@ class ModalNewClient extends Component {
         <form id='form-new-client'>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label for="inputName">Name</label>
-              <input name = "name" type="text" className="form-control" id="inputName" placeholder="Name"/>
+              <label htmlFor="inputName">Name</label>
+              <input name = "name" type="text" className="form-control" id="inputName" placeholder="Name" onBlur={this.props.onBlurField}/>
             </div>
             <div className="form-group col-md-6">
-              <label for="inputUsername">Username</label>
-              <input name="username" type="text" className="form-control" id="inputPassword4" placeholder="Username"/>
+              <label htmlFor="inputUsername">Username</label>
+              <input name="username" type="text" className="form-control" id="inputPassword4" placeholder="Username" onBlur={this.props.onBlurField}/>
             </div>
           </div>
           <div className="form-group">
-            <label for="Email">Email</label>
-            <input name="email" type="email" className="form-control" id="inputEmail" placeholder="myemail@mail.com"/>
+            <label htmlFor="Email">Email</label>
+            <input name="email" type="email" className="form-control" id="inputEmail" placeholder="myemail@mail.com" onBlur={this.props.onBlurField}/>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label for="inputCompany">Company</label>
-              <input name="company" type="text" className="form-control" id="inputCompany" placeholder="My Company name"/>
+              <label htmlFor="inputCompany">Company</label>
+              <input name="company" type="text" className="form-control" id="inputCompany" placeholder="My Company name" onBlur={this.props.onBlurField}/>
             </div>
             <div className="form-group col-md-6">
-              <label for="inputSite">Website</label>
-              <input name="site" type="text" className="form-control" id="inputSite" placeholder="www.mycompany.com"/>
+              <label htmlFor="inputSite">Website</label>
+              <input name="website" type="text" className="form-control" id="inputSite" placeholder="www.mycompany.com" onBlur={this.props.onBlurField}/>
             </div>
           </div>
           <div className="form-group">
-            <label for="inputPhone">Phone</label>
-            <input name="phone" type="text" className="form-control" id="inputPhone" placeholder="+55 09 1234-5678"/>
+            <label htmlFor="inputPhone">Phone</label>
+            <input name="phone" type="text" className="form-control" id="inputPhone" placeholder="+55 09 1234-5678" onBlur={this.props.onBlurField}/>
           </div>
         </form>
 
         </Modal.Body>
         <Modal.Footer>
             <button className="btn btn-secondary" onClick={()=>this.props.onHide()}>Close</button>
-            <button type='submit' className="btn btn-primary" form='form-new-client'>Save</button>
+            <button type='submit' className="btn btn-primary" form='form-new-client' onClick={this.props.handleSubmitClient}>Save</button>
         </Modal.Footer>
       </Modal>
 
