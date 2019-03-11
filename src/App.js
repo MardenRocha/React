@@ -18,9 +18,17 @@ class App extends Component {
       users: [],
       isLoading: true,
       modalShow: false,
-      newUser: {}
+      newUser: {},
+      modalEdit: false
     };
   }
+
+  saveId = id => {
+    let user = this.state.newUser;
+    user["id"] = id;
+
+    this.setState({ newUser: user });
+  };
 
   handleAddList = id => {
     const updateList = this.state.list;
@@ -35,6 +43,21 @@ class App extends Component {
     user["id"] = this.state.users.length + 1;
     let updateUsers = this.state.users;
     updateUsers.push(user);
+    this.setState({ users: updateUsers, modalShow: false, newUser: {} });
+  };
+
+  handleEditClient = event => {
+    event.preventDefault();
+
+    let user = this.state.newUser;
+    let updateUsers = this.state.users;
+
+    let index = this.state.users.findIndex(element => {
+      return user.id === element.id;
+    });
+
+    updateUsers[index] = user;
+
     this.setState({ users: updateUsers, modalShow: false, newUser: {} });
   };
 
@@ -103,8 +126,12 @@ class App extends Component {
     this.setState({ users: props.users, isLoading: props.isLoading });
   };
 
-  toggleModal = () => {
+  toggleModalSave = () => {
     this.setState({ modalShow: !this.state.modalShow });
+  };
+
+  toggleModalEdit = () => {
+    this.setState({ modalEdit: !this.state.modalEdit, newUser: {} });
   };
 
   render() {
@@ -151,10 +178,15 @@ class App extends Component {
                 isLoading={this.state.isLoading}
                 setUsers={this.setUsers}
                 del={this.handleDeleteUsers}
-                setModal={this.toggleModal}
+                setModal={this.toggleModalSave}
                 modalShow={this.state.modalShow}
                 handleSubmitClient={this.handleSubmitClient}
                 onBlurField={this.onBlurField}
+                modalEdit={this.state.modalEdit}
+                setModalEdit={this.toggleModalEdit}
+                handleEditClient={this.handleEditClient}
+                saveId={this.saveId}
+                newUser={this.state.newUser}
               />
             )}
           />

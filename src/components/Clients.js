@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ModalNewClient from "./ModalNewClient";
+import ModalEditClient from "./ModalEditClient";
 
 class Clients extends Component {
   constructor(props) {
@@ -65,6 +66,24 @@ class Clients extends Component {
                   <td>{user.phone}</td>
                   <td>{user.website}</td>
                   <td>{user.company.name}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => this.props.setModalEdit()}
+                    >
+                      Edit
+                    </button>
+                    <ModalEditClient
+                      show={this.props.modalEdit}
+                      onHide={() => this.props.setModalEdit()}
+                      handleEditClient={() => this.props.handleEditClient}
+                      onBlurField={() => this.props.onBlurField}
+                      users={this.props.users}
+                      saveId={() => this.props.saveId(user.id)}
+                      newUser={this.props.newUser}
+                    />
+                  </td>
                   <td>
                     <button
                       onClick={() => this.props.del(user.id)}
