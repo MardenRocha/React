@@ -56,7 +56,7 @@ class App extends Component {
       return user.id === element.id;
     });
 
-    updateUsers[index] = user;
+    updateUsers[index] = Object.assign(updateUsers[index], user);
 
     this.setState({ users: updateUsers, modalShow: false, newUser: {} });
   };
@@ -131,7 +131,16 @@ class App extends Component {
   };
 
   toggleModalEdit = () => {
-    this.setState({ modalEdit: !this.state.modalEdit, newUser: {} });
+    this.setState({ modalEdit: !this.state.modalEdit });
+  };
+
+  setModalEdit = (id = "null") => {
+    if (id) {
+      this.saveId(id);
+      this.toggleModalEdit();
+    } else {
+      this.toggleModalEdit();
+    }
   };
 
   render() {
@@ -183,7 +192,7 @@ class App extends Component {
                 handleSubmitClient={this.handleSubmitClient}
                 onBlurField={this.onBlurField}
                 modalEdit={this.state.modalEdit}
-                setModalEdit={this.toggleModalEdit}
+                setModalEdit={this.setModalEdit}
                 handleEditClient={this.handleEditClient}
                 saveId={this.saveId}
                 newUser={this.state.newUser}

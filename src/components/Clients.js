@@ -5,8 +5,16 @@ import ModalEditClient from "./ModalEditClient";
 class Clients extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: this.props.users, isLoading: this.props.isLoading };
+    this.state = {
+      users: this.props.users,
+      isLoading: this.props.isLoading,
+      refreshModal: false
+    };
   }
+
+  refreshList = () => {
+    this.setState({ refreshModal: !this.state.refreshModal });
+  };
 
   componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -70,18 +78,18 @@ class Clients extends Component {
                     <button
                       type="button"
                       className="btn btn-primary"
-                      onClick={() => this.props.setModalEdit()}
+                      onClick={() => this.props.setModalEdit(user.id)}
                     >
                       Edit
                     </button>
                     <ModalEditClient
                       show={this.props.modalEdit}
                       onHide={() => this.props.setModalEdit()}
-                      handleEditClient={() => this.props.handleEditClient}
-                      onBlurField={() => this.props.onBlurField}
+                      handleEditClient={this.props.handleEditClient}
+                      onBlurField={this.props.onBlurField}
                       users={this.props.users}
-                      saveId={() => this.props.saveId(user.id)}
                       newUser={this.props.newUser}
+                      refreshModal={() => this.refreshList}
                     />
                   </td>
                   <td>

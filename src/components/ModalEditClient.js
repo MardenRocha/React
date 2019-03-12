@@ -7,24 +7,31 @@ class ModalEditClient extends Component {
     super(props);
     this.state = { id: props.newUser.id };
   }
+
+  componentWillReceiveProps(props) {
+    if (props.newUser.id !== this.state.id) {
+      props.refreshModal();
+    }
+  }
+
   render() {
     const { show, onHide } = this.props;
 
     const userEdited = () => {
-      if (!this.state.id) {
+      if (!this.props.newUser.id) {
         return {
           name: "",
           email: "",
           username: "",
-          website: "",
           phone: "",
+          website: "",
           company: { name: "" }
         };
+      } else {
+        return this.props.users.find(element => {
+          return this.props.newUser.id === element.id;
+        });
       }
-
-      return this.props.users.find(element => {
-        return this.props.newUser.id === element.id;
-      });
     };
 
     return (
