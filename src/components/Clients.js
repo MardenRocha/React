@@ -84,7 +84,7 @@ class Clients extends Component {
                     </button>
                     <ModalEditClient
                       show={this.props.modalEdit}
-                      onHide={() => this.props.setModalEdit()}
+                      onHide={this.props.setModalEdit}
                       handleEditClient={this.props.handleEditClient}
                       onBlurField={this.props.onBlurField}
                       users={this.props.users}

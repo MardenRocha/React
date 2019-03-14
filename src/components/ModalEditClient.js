@@ -28,9 +28,9 @@ class ModalEditClient extends Component {
           company: { name: "" }
         };
       } else {
-        return this.props.users.find(element => {
-          return this.props.newUser.id === element.id;
-        });
+        return this.props.users.find(
+          element => this.props.newUser.id === element.id
+        );
       }
     };
 

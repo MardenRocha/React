@@ -50,15 +50,11 @@ class App extends Component {
     event.preventDefault();
 
     let user = this.state.newUser;
-    let updateUsers = this.state.users;
-
-    let index = this.state.users.findIndex(element => {
-      return user.id === element.id;
-    });
+    let updateUsers = [...this.state.users];
+    let index = this.state.users.findIndex(element => user.id === element.id);
 
     updateUsers[index] = Object.assign(updateUsers[index], user);
-
-    this.setState({ users: updateUsers, modalShow: false, newUser: {} });
+    this.setState({ users: updateUsers, modalEdit: false, newUser: {} });
   };
 
   onBlurField = event => {
@@ -134,7 +130,7 @@ class App extends Component {
     this.setState({ modalEdit: !this.state.modalEdit });
   };
 
-  setModalEdit = (id = "null") => {
+  setModalEdit = (id = null) => {
     if (id) {
       this.saveId(id);
       this.toggleModalEdit();
